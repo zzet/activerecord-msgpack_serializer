@@ -4,10 +4,10 @@ require 'msgpack'
 class ActiveRecord::Serializers::MessagePackSerializer
   def self.load(binary)
     return nil if binary.nil? || binary.match(/\A[[:space:]]*\z/)
-    MessagePack.unpack(binary.force_encoding("ASCII-8BIT"))
+    MessagePack.unpack(binary)
   end
 
   def self.dump(obj)
-    MessagePack.pack(obj).force_encoding("ASCII-8BIT")
+    MessagePack.pack(obj)
   end
 end
